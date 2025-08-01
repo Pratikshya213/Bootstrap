@@ -5,3 +5,7 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+$('.accordion-button').click(function() {
+  console.log("FAQ item clicked: " + $(this).text());
+});
