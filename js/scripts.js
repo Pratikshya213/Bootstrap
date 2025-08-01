@@ -6,6 +6,24 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-$('.accordion-button').click(function() {
-  console.log("FAQ item clicked: " + $(this).text());
+$(document).ready(function() {
+  // When an accordion item is shown
+  $('#accordionExample').on('shown.bs.collapse', function() {
+    // Get the active accordion item
+    var activeItem = $(this).find('.accordion-collapse.show');
+    
+    // Change background color of the active question
+    activeItem.closest('.accordion-item').css('background-color', '#f8f9fa');
+    
+    // Add a checkmark icon to the question button
+    activeItem.prev().find('.accordion-button').append(
+      ' <span class="ms-2 text-success"><i class="fas fa-check"></i></span>'
+    );
+  });
+
+  // When an accordion item is hidden
+  $('#accordionExample').on('hidden.bs.collapse', function() {
+    // Reset background color
+    $(this).find('.accordion-item').css('background-color', '');
+  });
 });
